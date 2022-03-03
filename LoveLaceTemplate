@@ -1,0 +1,579 @@
+cards:
+  - color: rgb(44, 109, 214)
+    color_type: label-card
+    name: Familyroom Harmony
+    type: custom:button-card
+  - cards:
+      - card:
+          color: auto
+          color_type: card
+          icon: mdi:power
+          tap_action:
+            action: call-service
+            service: remote.turn_on
+            service_data:
+              activity: PowerOff
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: remote.harmony_hub
+            state: 'on'
+        type: conditional
+      - card:
+          color: auto
+          color_type: card
+          icon: mdi:television-classic
+          tap_action:
+            action: call-service
+            service: remote.turn_on
+            service_data:
+              activity: Watch TV
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state_not: Watch TV
+        type: conditional
+      - card:
+          color: auto
+          color_type: card
+          icon: mdi:google
+          tap_action:
+            action: call-service
+            service: remote.turn_on
+            service_data:
+              activity: SHIELD TV
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state_not: SHIELD TV
+        type: conditional
+      - card:
+          color: auto
+          color_type: card
+          icon: mdi:music
+          tap_action:
+            action: call-service
+            service: remote.turn_on
+            service_data:
+              activity: Listen to Music
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state_not: Listen to Music
+        type: conditional
+    type: horizontal-stack
+  - cards:
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Listen to Music
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:volume-plus
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - VolumeUp
+              delay_secs: 0.6
+              device: Bose Amp
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: remote.harmony_hub
+            state: 'on'
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          name: Guide
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - Guide
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-up
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - PageUp
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Listen to Music
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+    type: horizontal-stack
+  - cards:
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Listen to Music
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:volume-minus
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - VolumeDown
+              delay_secs: 0.6
+              device: Bose Amp
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: remote.harmony_hub
+            state: 'on'
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          name: Info
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - Info
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-down
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - PageDown
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Listen to Music
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+    type: horizontal-stack
+  - cards:
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Listen to Music
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:volume-mute
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - Mute
+              delay_secs: 0.6
+              device: Bose Amp
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: remote.harmony_hub
+            state: 'on'
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          name: Back
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - Back
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:keyboard-return
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - Last
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Listen to Music
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+    type: horizontal-stack
+  - cards:
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-up
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - DirectionUp
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+    type: horizontal-stack
+  - cards:
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-left
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - DirectionLeft
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:circle
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - Enter/Ok
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-right
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - DirectionRight
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+    type: horizontal-stack
+  - cards:
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-down
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - DirectionDown
+              delay_secs: 0.6
+              device: Shaw Direct DVR
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: Watch TV
+        type: conditional
+    type: horizontal-stack
+  - cards:
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-up
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - DirectionUp
+              delay_secs: 0.6
+              device: NVIDIA SHIELD TV
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+    type: horizontal-stack
+  - cards:
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-left
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - DirectionLeft
+              delay_secs: 0.6
+              device: NVIDIA SHIELD TV
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:circle
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - OK
+              delay_secs: 0.6
+              device: NVIDIA SHIELD TV
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-right
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - DirectionRight
+              delay_secs: 0.6
+              device: NVIDIA SHIELD TV
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+    type: horizontal-stack
+  - cards:
+      - card:
+          color_type: blank-card
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:arrow-down
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - DirectionDown
+              delay_secs: 0.6
+              device: NVIDIA SHIELD TV
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+      - card:
+          color: rgb(223, 255, 97)
+          color_type: card
+          icon: mdi:keyboard-return
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              command:
+                - Back
+              delay_secs: 0.6
+              device: NVIDIA SHIELD TV
+              entity_id: remote.harmony_hub
+          type: custom:button-card
+        conditions:
+          - entity: sensor.harmony_familyroom_activity
+            state: SHIELD TV
+        type: conditional
+    type: horizontal-stack
+type: vertical-stack
